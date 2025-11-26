@@ -7,7 +7,11 @@ use App\Http\Controllers\admin\resep\AdminResepController;
 use App\Http\Controllers\admin\resep\kategori\AdminKategoriController;
 use App\Http\Controllers\admin\ulasan\AdminUlasanController;
 use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\user\favorite\UserFavoriteController;
+use App\Http\Controllers\user\recipes\UserRecipesController;
+use App\Http\Controllers\user\UserAuthController;
 use App\Http\Controllers\user\UserController;
+use App\Http\Controllers\user\UserProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [UserController::class, 'index'])->name('user.dashboard');
@@ -35,6 +39,11 @@ Route::get('/elements', function () {
     return view('user.pages.elements');
 })->name('user.elements');
 
+
+
+
+
+
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
 
 Route::get('/pengguna/admin', [AdminPenggunaAdminController::class, 'index'])->name('admin.pengguna.admin');
@@ -46,6 +55,12 @@ Route::get('/resep/kategori', [AdminKategoriController::class, 'index'])->name('
 Route::get('/ulasan', [AdminUlasanController::class, 'index'])->name('admin.ulasan');
 
 Route::get('/profile/admin', [AdminProfileController::class, 'index'])->name('admin.profile');
+
+Route::get('/recipes', [UserRecipesController::class, 'index'])->name('user.recipes');
+Route::get('/favorite', [UserFavoriteController::class, 'index'])->name('user.favorite');
+Route::get('/auth/login', [UserAuthController::class, 'index'])->name('user.auth.login');
+Route::get('/profile', [UserProfileController::class, 'index'])->name('user.profile');
+
 
 // Dashboard
 Route::get('/dashboard-general-dashboard', function () {

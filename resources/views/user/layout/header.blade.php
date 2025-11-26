@@ -90,46 +90,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Mega Menu</a>
-                                    <div class="megamenu">
-                                        <ul class="single-mega cn-col-4">
-                                            <li class="title">Catagory</li>
-                                            <li><a href="{{ route('user.index')}}">Home</a></li>
-                                            <li><a href="{{ route('user.about')}}">About Us</a></li>
-                                            <li><a href="{{ route('user.blog-post')}}">Blog Post</a></li>
-                                            <li><a href="{{ route('user.receipe-post')}}">Receipe Post</a></li>
-                                            <li><a href="{{ route('user.contact')}}">Contact</a></li>
-                                            <li><a href="{{ route('user.elements')}}">Elements</a></li>
-                                        </ul>
-                                        <ul class="single-mega cn-col-4">
-                                            <li class="title">Catagory</li>
-                                            <li><a href="{{ route('user.index')}}">Home</a></li>
-                                            <li><a href="{{ route('user.about')}}">About Us</a></li>
-                                            <li><a href="{{ route('user.blog-post')}}">Blog Post</a></li>
-                                            <li><a href="{{ route('user.receipe-post')}}">Receipe Post</a></li>
-                                            <li><a href="{{ route('user.contact')}}">Contact</a></li>
-                                            <li><a href="{{ route('user.elements')}}">Elements</a></li>
-                                        </ul>
-                                        <ul class="single-mega cn-col-4">
-                                            <li class="title">Catagory</li>
-                                            <li><a href="{{ route('user.index')}}">Home</a></li>
-                                            <li><a href="{{ route('user.about')}}">About Us</a></li>
-                                            <li><a href="{{ route('user.blog-post')}}">Blog Post</a></li>
-                                            <li><a href="{{ route('user.receipe-post')}}">Receipe Post</a></li>
-                                            <li><a href="{{ route('user.contact')}}">Contact</a></li>
-                                            <li><a href="{{ route('user.elements')}}">Elements</a></li>
-                                        </ul>
-                                        <div class="single-mega cn-col-4">
-                                            <div class="receipe-slider owl-carousel">
-                                                <a href="#"><img src="{{ asset('user/img/bg-img/bg1.jpg')}}" alt=""></a>
-                                                <a href="#"><img src="{{ asset('user/img/bg-img/bg6.jpg')}}" alt=""></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li><a href="{{ route('user.receipe-post')}}">Receipies</a></li>
-                                <li><a href="{{ route('user.receipe-post')}}">4 Vegans</a></li>
-                                <li><a href="{{ route('user.contact')}}">Contact</a></li>
+                                <li><a href="{{ route('user.recipes')}}">Receipies</a></li>
+                                <li><a href="{{ route('user.favorite')}}">My Favorite</a></li>
+                                {{-- <li><a href="{{route('user.profile')}}">Profile</a></li> --}}
+                                <li><a href="{{ route('user.auth.login')}}">Login</a></li>
                             </ul>
 
                             <!-- Newsletter Form -->
