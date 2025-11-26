@@ -1,5 +1,12 @@
 <?php
 
+use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\pengguna\admin\AdminPenggunaAdminController;
+use App\Http\Controllers\admin\pengguna\user\AdminPenggunaUserController;
+use App\Http\Controllers\admin\resep\AdminResepController;
+use App\Http\Controllers\admin\resep\kategori\AdminKategoriController;
+use App\Http\Controllers\admin\ulasan\AdminUlasanController;
+use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\user\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +34,18 @@ Route::get('/contact', function () {
 Route::get('/elements', function () {
     return view('user.pages.elements');
 })->name('user.elements');
+
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+
+Route::get('/pengguna/admin', [AdminPenggunaAdminController::class, 'index'])->name('admin.pengguna.admin');
+Route::get('/pengguna/user', [AdminPenggunaUserController::class, 'index'])->name('admin.pengguna.user');
+
+Route::get('/resep', [AdminResepController::class, 'index'])->name('admin.resep');
+Route::get('/resep/kategori', [AdminKategoriController::class, 'index'])->name('admin.resep.kategori');
+
+Route::get('/ulasan', [AdminUlasanController::class, 'index'])->name('admin.ulasan');
+
+Route::get('/profile/admin', [AdminProfileController::class, 'index'])->name('admin.profile');
 
 // Dashboard
 Route::get('/dashboard-general-dashboard', function () {
