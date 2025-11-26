@@ -47,6 +47,7 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
+                                                <th>Nama</th>
                                                 <th>Email</th>
                                                 <th>Jenis Kelamin</th>
                                                 <th>Tanggal Lahir</th>
