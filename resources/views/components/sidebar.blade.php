@@ -37,8 +37,8 @@
             <li class="nav-item dropdown {{ $type_menu === 'resep' ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fa fa-utensils"></i><span>Data Resep</span></a>
                 <ul class="dropdown-menu">
-                    <li class='{{ Request::is('resep/kategori') ? 'active' : '' }}'>
-                        <a class="nav-link" href="{{route('admin.resep.kategori')}}">
+                    <li class='{{ Request::is('kategori/resep') ? 'active' : '' }}'>
+                        <a class="nav-link" href="{{ route('admin.resep.kategori') }}">
                             Kategori
                         </a>
                     </li>

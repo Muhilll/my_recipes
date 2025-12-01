@@ -73,7 +73,7 @@ Route::get('/resep/{id}', [AdminResepController::class, 'show'])->name('admin.re
 Route::put('/resep/{id}', [AdminResepController::class, 'update'])->name('admin.resep.update');
 Route::delete('/resep/{id}', [AdminResepController::class, 'delete'])->name('admin.resep.delete');
 
-Route::get('/resep/kategori', [AdminKategoriController::class, 'index'])->name('admin.resep.kategori');
+Route::get('/kategori/resep', [AdminKategoriController::class, 'index'])->name('admin.resep.kategori');
 Route::get('/resep/kategori/data', [AdminKategoriController::class, 'data'])->name('admin.resep.kategori.data');
 Route::post('/resep/kategori', [AdminKategoriController::class, 'store'])->name('admin.resep.kategori.store');
 Route::get('/resep/kategori/{id}', [AdminKategoriController::class, 'show'])->name('admin.resep.kategori.show');

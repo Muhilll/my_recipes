@@ -33,7 +33,6 @@ function loadTabelKategori(page = 1) {
                         <td>${index + 1 + (page - 1) * 10}</td>
                         <td>${ktg.nama}</td>
                         <td>${ktg.slug}</td>
-                        <td>-</td>
                         <td>
                             <button class="btn btn-warning btn-edit" data-id="${ktg.id}">
                                 <i class="fa fa-edit"></i>
