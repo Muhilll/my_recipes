@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('reseps', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->longText('gambar');
+            $table->string('des');
             $table->integer('persiapan');
             $table->integer('masak');
             $table->integer('hasil');

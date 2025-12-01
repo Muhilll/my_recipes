@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Admin - Resep - Kategori')
+@section('title', 'Admin - Pengguna - Member')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -11,10 +11,10 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Data Resep - Kategori</h1>
+                <h1>Data Pengguna - Member</h1>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dashboard</a></div>
-                    <div class="breadcrumb-item">Kategori</div>
+                    <div class="breadcrumb-item active"><a href="{{ route('user.dashboard') }}">Dashboard</a></div>
+                    <div class="breadcrumb-item">Member</div>
                 </div>
             </div>
 
@@ -28,6 +28,7 @@
                                     <form>
                                         <div class="input-group">
                                             <input type="text"
+                                                id="search"
                                                 class="form-control"
                                                 placeholder="Search">
                                             <div class="input-group-btn">
@@ -36,19 +37,22 @@
                                         </div>
                                     </form>
                                 </div>
-                                <button class="btn btn-primary mx-2" id="modal-tambah-kategori">
+                                <button class="btn btn-primary mx-2" id="modal-tambah-member">
                                     <i class="fa fa-plus"></i>
                                     Tambah
                                 </button>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table-bordered table-md table" id="tabel-kategori">
+                                    <table class="table-bordered table-md table" id="tabel-member">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
                                                 <th>Nama</th>
-                                                <th>Slug</th>
+                                                <th>Email</th>
+                                                <th>Jenis Kelamin</th>
+                                                <th>Status</th>
+                                                <th>Tanggal Bergabung</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -59,23 +63,7 @@
                             <div class="card-footer text-right">
                                 <nav class="d-inline-block">
                                     <ul class="pagination mb-0">
-                                        <li class="page-item disabled">
-                                            <a class="page-link"
-                                                href="#"
-                                                tabindex="-1"><i class="fas fa-chevron-left"></i></a>
-                                        </li>
-                                        <li class="page-item active"><a class="page-link"
-                                                href="#">1 <span class="sr-only">(current)</span></a></li>
-                                        <li class="page-item">
-                                            <a class="page-link"
-                                                href="#">2</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link"
-                                                href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link"
-                                                href="#"><i class="fas fa-chevron-right"></i></a>
-                                        </li>
+                                        <!-- Pagination akan di-render via JS -->
                                     </ul>
                                 </nav>
                             </div>
@@ -86,22 +74,22 @@
         </section>
     </div>
 
-    <!-- Modal Tambah/Edit Kategori -->
-    <div class="modal fade" id="modalKategori" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Modal Tambah/Edit Member -->
+    <div class="modal fade" id="modalMember" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <form id="formKategori">
+                <form id="formMember">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modalKategoriLabel">Tambah Kategori</h5>
+                        <h5 class="modal-title" id="modalMemberLabel">Tambah Member</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        @include('admin.resep.kategori.form')
+                        @include('admin.pengguna.member.form')
                     </div>
                     <div class="modal-footer">
-                        <input type="hidden" name="kategori_id" id="kategori_id">
+                        <input type="hidden" name="member_id" id="member_id">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                         <button type="submit" class="btn btn-primary" id="btnSimpan">Simpan</button>
                     </div>
@@ -119,5 +107,5 @@
 
     <!-- Page Specific JS File -->
     <script src="{{ asset('js/page/components-table.js') }}"></script>
-    <script src="{{ asset('js/admin/resep/kategori/script.js') }}"></script>
+    <script src="{{ asset('js/admin/pengguna/member/script.js') }}"></script>
 @endpush

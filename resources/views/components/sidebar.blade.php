@@ -22,6 +22,11 @@
                             User
                         </a>
                     </li>
+                    <li class='{{ Request::is('pengguna/member') ? 'active' : '' }}'>
+                        <a class="nav-link" href="{{ route('admin.pengguna.member') }}">
+                            Member
+                        </a>
+                    </li>
                     <li class='{{ Request::is('pengguna/admin') ? 'active' : '' }}'>
                         <a class="nav-link" href="{{ route('admin.pengguna.admin') }}">
                             Admin
@@ -202,8 +207,9 @@
                         <a class="nav-link" href="{{ url('forms-validation') }}">Validation</a>
                     </li>
                 </ul>
-            </li> --}}
-            {{-- <li class="nav-item dropdown">
+            </li> 
+            
+            <li class="nav-item dropdown">
                 <a href="#"
                     class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i> <span>Google
                         Maps</span></a>
@@ -217,8 +223,9 @@
                     <li><a href="gmaps-route.html">Route</a></li>
                     <li><a href="gmaps-simple.html">Simple</a></li>
                 </ul>
-            </li> --}}
-            {{-- <li class="nav-item dropdown {{ $type_menu === 'modules' ? 'active' : '' }}">
+            </li>
+            
+            <li class="nav-item dropdown {{ $type_menu === 'modules' ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-plug"></i> <span>Modules</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('modules-calendar') ? 'active' : '' }}">
@@ -346,10 +353,11 @@
                 </a>
             </li>
         </ul>
+
         <div class="hide-sidebar-mini mt-4 mb-4 p-3">
             <a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">
                 <i class="fas fa-rocket"></i> Documentation
             </a>
-        </div> --}}
+        </div>  --}}
     </aside>
 </div>

@@ -28,6 +28,7 @@
                                     <form>
                                         <div class="input-group">
                                             <input type="text"
+                                                id="search"
                                                 class="form-control"
                                                 placeholder="Search">
                                             <div class="input-group-btn">
@@ -50,7 +51,6 @@
                                                 <th>Nama</th>
                                                 <th>Email</th>
                                                 <th>Jenis Kelamin</th>
-                                                <th>Tanggal Lahir</th>
                                                 <th>Alamat</th>
                                                 <th>No Hp</th>
                                                 <th>Action</th>
@@ -63,23 +63,7 @@
                             <div class="card-footer text-right">
                                 <nav class="d-inline-block">
                                     <ul class="pagination mb-0">
-                                        <li class="page-item disabled">
-                                            <a class="page-link"
-                                                href="#"
-                                                tabindex="-1"><i class="fas fa-chevron-left"></i></a>
-                                        </li>
-                                        <li class="page-item active"><a class="page-link"
-                                                href="#">1 <span class="sr-only">(current)</span></a></li>
-                                        <li class="page-item">
-                                            <a class="page-link"
-                                                href="#">2</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link"
-                                                href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link"
-                                                href="#"><i class="fas fa-chevron-right"></i></a>
-                                        </li>
+                                        <!-- Pagination akan di-render via JS -->
                                     </ul>
                                 </nav>
                             </div>

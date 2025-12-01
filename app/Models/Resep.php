@@ -8,12 +8,20 @@ class Resep extends Model
 {
     protected $fillable = [
         'nama',
+        'gambar',
+        'des',
         'persiapan',
         'masak',
         'hasil',
         'langkah',
         'bahan',
         'kategori_id'
+    ];
+
+    protected $casts = [
+        'gambar' => 'array',
+        'bahan' => 'array',
+        'langkah' => 'array',
     ];
 
     public function kategori()

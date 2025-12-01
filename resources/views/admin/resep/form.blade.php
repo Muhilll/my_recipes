@@ -9,11 +9,9 @@
         </div>
         <select name="kategori_id" class="form-control" required>
             <option value="">-- Pilih Kategori --</option>
-            {{-- @foreach ($kategori as $item)
-                <option value="{{ $item->id }}">{{ $item->nama }}</option>
-            @endforeach --}}
-            <option value="">Manisan</option>
-            <option value="">Sari Laut</option>
+            @foreach ($dataKategori as $kategori)
+                <option value="{{ $kategori->id }}">{{ $kategori->nama }}</option>
+            @endforeach
         </select>
     </div>
 </div>
@@ -28,6 +26,21 @@
             </div>
         </div>
         <input type="text" name="nama" class="form-control" placeholder="Masukkan nama resep" required>
+    </div>
+</div>
+
+{{-- Upload Gambar --}}
+<div class="form-group">
+    <label>Gambar Resep</label>
+
+    <div id="gambar-grid" class="gambar-grid">
+
+        <label class="gambar-box add-gambar" for="inputAddGambar">
+            <span class="text-center w-100 h-100 d-flex align-items-center justify-content-center">
+                <i class="fa fa-plus fa-2x text-secondary"></i>
+            </span>
+        </label>
+        <input type="file" id="inputAddGambar" class="input-add-gambar" accept="image/*" hidden>
     </div>
 </div>
 
@@ -122,4 +135,3 @@
         <i class="fa fa-plus"></i> Tambah Step
     </button>
 </div>
-

@@ -21,6 +21,6 @@
                 <i class="fas fa-lock"></i>
             </div>
         </div>
-        <input type="password" class="form-control" name="password" placeholder="Masukkan password" required>
+        <input type="password" class="form-control" name="password" placeholder="Masukkan password">
     </div>
 </div>

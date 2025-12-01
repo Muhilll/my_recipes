@@ -38,20 +38,6 @@
     <div class="invalid-feedback"></div>
 </div>
 
-{{-- Tanggal Lahir --}}
-<div class="form-group">
-    <label>Tanggal Lahir</label>
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <div class="input-group-text">
-                <i class="fas fa-calendar"></i>
-            </div>
-        </div>
-        <input type="date" class="form-control" name="tgl_lahir" required>
-    </div>
-    <div class="invalid-feedback"></div>
-</div>
-
 {{-- Alamat --}}
 <div class="form-group">
     <label>Alamat</label>
@@ -90,6 +76,7 @@
                 <i class="fas fa-lock"></i>
             </div>
         </div>
-        <input type="password" class="form-control" name="password" placeholder="Masukkan password" required>
+        <input type="password" class="form-control" name="password" placeholder="Masukkan password">
     </div>
+    <div class="invalid-feedback"></div>
 </div>

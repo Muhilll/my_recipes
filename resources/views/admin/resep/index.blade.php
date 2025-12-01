@@ -5,6 +5,45 @@
 @push('style')
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ asset('library/izitoast/dist/css/iziToast.min.css') }}">
+    <style>
+        .gambar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+        }
+
+        .gambar-box {
+            width: 120px;
+            height: 120px;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .gambar-box input {
+            display: none;
+        }
+
+        .btn-remove-gambar {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(255, 0, 0, 0.7);
+            border: none;
+            color: white;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+    </style>
 @endpush
 
 @section('main')
@@ -27,9 +66,7 @@
                                 <div class="card-header-form">
                                     <form>
                                         <div class="input-group">
-                                            <input type="text"
-                                                class="form-control"
-                                                placeholder="Search">
+                                            <input type="text" class="form-control" placeholder="Search">
                                             <div class="input-group-btn">
                                                 <button class="btn btn-primary"><i class="fas fa-search"></i></button>
                                             </div>
@@ -63,21 +100,17 @@
                                 <nav class="d-inline-block">
                                     <ul class="pagination mb-0">
                                         <li class="page-item disabled">
-                                            <a class="page-link"
-                                                href="#"
-                                                tabindex="-1"><i class="fas fa-chevron-left"></i></a>
+                                            <a class="page-link" href="#" tabindex="-1"><i
+                                                    class="fas fa-chevron-left"></i></a>
                                         </li>
-                                        <li class="page-item active"><a class="page-link"
-                                                href="#">1 <span class="sr-only">(current)</span></a></li>
+                                        <li class="page-item active"><a class="page-link" href="#">1 <span
+                                                    class="sr-only">(current)</span></a></li>
                                         <li class="page-item">
-                                            <a class="page-link"
-                                                href="#">2</a>
+                                            <a class="page-link" href="#">2</a>
                                         </li>
-                                        <li class="page-item"><a class="page-link"
-                                                href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
                                         <li class="page-item">
-                                            <a class="page-link"
-                                                href="#"><i class="fas fa-chevron-right"></i></a>
+                                            <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
                                         </li>
                                     </ul>
                                 </nav>
@@ -123,6 +156,7 @@
     <!-- Page Specific JS File -->
     <script src="{{ asset('js/page/components-table.js') }}"></script>
     <script src="{{ asset('js/admin/resep/script.js') }}"></script>
+    <script src="{{ asset('js/admin/resep/gambar.js') }}"></script>
     <script src="{{ asset('js/admin/resep/bahan.js') }}"></script>
     <script src="{{ asset('js/admin/resep/langkah.js') }}"></script>
 @endpush

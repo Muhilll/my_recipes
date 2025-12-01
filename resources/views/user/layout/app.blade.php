@@ -16,6 +16,7 @@
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="{{ asset('user/style.css')}}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
 

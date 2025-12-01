@@ -21,6 +21,8 @@ return new class extends Migration
             $table->text('alamat')->nullable();
             $table->string('no_hp')->nullable();
             $table->enum('role', ['admin', 'user'])->default('user');
+            $table->enum('status', ['guest', 'member'])->default('guest');
+            $table->date('tgl_daftar')->nullable();
             $table->timestamps();
         });
 
