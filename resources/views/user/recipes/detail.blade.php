@@ -73,6 +73,13 @@
         <div class="receipe-content-area">
             <div class="container">
 
+                <br><br>
+                <div class="row" style="width: 100%; justify-self: center">
+                    <div class="single-preparation-step d-flex">
+                        <p>{{$resep->des}}</p>
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col-12 col-md-8">
                         <div class="receipe-headline my-5">
@@ -97,12 +104,6 @@
                             </div>
                             <a href="#" class="btn delicious-btn">For Begginers</a>
                         </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="single-preparation-step d-flex">
-                        <p>{{$resep->des}}</p>
                     </div>
                 </div>
 
