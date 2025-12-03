@@ -101,6 +101,12 @@
                 </div>
 
                 <div class="row">
+                    <div class="single-preparation-step d-flex">
+                        <p>{{$resep->des}}</p>
+                    </div>
+                </div>
+
+                <div class="row">
                     <div class="col-12 col-lg-8">
                         <!-- Single Preparation Step -->
                         @foreach (json_decode($resep->langkah, true) as $langkah)
