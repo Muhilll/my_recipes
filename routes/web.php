@@ -7,7 +7,7 @@ use App\Http\Controllers\admin\pengguna\user\AdminPenggunaUserController;
 use App\Http\Controllers\admin\resep\AdminResepController;
 use App\Http\Controllers\admin\resep\kategori\AdminKategoriController;
 use App\Http\Controllers\admin\ulasan\AdminUlasanController;
-use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\admin\AdminProfileController;
 use App\Http\Controllers\user\favorite\UserFavoriteController;
 use App\Http\Controllers\user\recipes\UserRecipesController;
 use App\Http\Controllers\user\UserAuthController;

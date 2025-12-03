@@ -94,7 +94,6 @@
                                 <li class="{{ request()->routeIs('user.favorite') ? 'active' : '' }}"><a href="{{ route('user.favorite')}}">My Favorite</a></li>
                                 {{-- <li><a href="{{route('user.profile')}}">Profile</a></li> --}}
                                 <li class="{{ request()->routeIs('user.auth.login') ? 'active' : '' }}"><a href="{{ route('user.auth.login')}}">Login</a></li>
-                                <li class="{{ request()->routeIs('user.auth.login') ? 'active' : '' }}"><a href="{{ route('user.auth.login')}}">Login</a></li>
                             </ul>
 
                             <!-- Newsletter Form -->
