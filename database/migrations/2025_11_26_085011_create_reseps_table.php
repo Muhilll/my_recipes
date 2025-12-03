@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->longText('gambar');
-            $table->string('des');
+            $table->longText('des');
             $table->integer('persiapan');
             $table->integer('masak');
             $table->integer('hasil');

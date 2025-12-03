@@ -81,7 +81,7 @@
                                             <br>
                                             Category: <a href="#"><b>{{ $resep->kategori->nama }}</b></a>
                                         </div>
-                                        <p>{{ $resep->des }}</p>
+                                        <p>{{ \Illuminate\Support\Str::limit($resep->des, 100, '...') }}</p>
                                         <a href="{{ route('user.recipes.detail', encrypt($resep->id)) }}" class="btn delicious-btn">Read
                                             More</a>
                                     </div>
