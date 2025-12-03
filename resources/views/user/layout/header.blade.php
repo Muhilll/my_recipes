@@ -59,8 +59,8 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul>
-                                <li class="active"><a href="{{route('user.dashboard')}}">Home</a></li>
-                                <li><a href="#">Pages</a>
+                                <li class="{{ request()->routeIs('user.dashboard') ? 'active' : '' }}"><a href="{{route('user.dashboard')}}">Home</a></li>
+                                {{-- <li><a href="#">Pages</a>
                                     <ul class="dropdown">
                                         <li><a href="{{ route('user.about')}}">About Us</a></li>
                                         <li><a href="{{ route('user.index')}}">Home</a></li>
@@ -89,11 +89,12 @@
                                             </ul>
                                         </li>
                                     </ul>
-                                </li>
-                                <li><a href="{{ route('user.recipes')}}">Receipies</a></li>
-                                <li><a href="{{ route('user.favorite')}}">My Favorite</a></li>
+                                </li> --}}
+                                <li class="{{ request()->routeIs('user.recipes') ? 'active' : '' }}"><a href="{{ route('user.recipes')}}">Receipies</a></li>
+                                <li class="{{ request()->routeIs('user.favorite') ? 'active' : '' }}"><a href="{{ route('user.favorite')}}">My Favorite</a></li>
                                 {{-- <li><a href="{{route('user.profile')}}">Profile</a></li> --}}
-                                <li><a href="{{ route('user.auth.login')}}">Login</a></li>
+                                <li class="{{ request()->routeIs('user.auth.login') ? 'active' : '' }}"><a href="{{ route('user.auth.login')}}">Login</a></li>
+                                <li class="{{ request()->routeIs('user.auth.login') ? 'active' : '' }}"><a href="{{ route('user.auth.login')}}">Login</a></li>
                             </ul>
 
                             <!-- Newsletter Form -->
