@@ -86,6 +86,7 @@ Route::get('/ulasan', [AdminUlasanController::class, 'index'])->name('admin.ulas
 Route::get('/profile/admin', [AdminProfileController::class, 'index'])->name('admin.profile');
 
 Route::get('/recipes', [UserRecipesController::class, 'index'])->name('user.recipes');
+Route::get('/recipes/detail/{id}', [UserRecipesController::class, 'detail'])->name('user.recipes.detail');
 Route::get('/favorite', [UserFavoriteController::class, 'index'])->name('user.favorite');
 Route::get('/auth/login', [UserAuthController::class, 'index'])->name('user.auth.login');
 Route::get('/profile', [UserProfileController::class, 'index'])->name('user.profile');

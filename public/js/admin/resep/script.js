@@ -173,6 +173,13 @@ $("#formResep").submit(function (e) {
                 position: "topRight",
             });
             $("#modalResep").modal("hide");
+            $("#formResep")[0].reset();
+            $("#resep_id").val("");
+            $("#gambar-grid .gambar-box").not(".add-gambar").remove();
+            $("#bahan-container").empty();
+            $("#step-container").empty();
+            $("#formResep .form-control").removeClass("is-invalid");
+            $("#formResep .invalid-feedback").text("");
             loadTabelResep();
         },
         error: function (err) {

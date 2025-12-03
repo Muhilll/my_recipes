@@ -58,71 +58,37 @@
             <div class="col">
                 <div class="blog-posts-area">
                     <div class="row">
-                        <!-- Single Blog Area -->
-                        <div class="col-md-4">
-                            <div class="single-blog-area mb-80">
-                                <div class="blog-thumbnail">
-                                    <img src="{{ asset('user/img/blog-img/1.jpg') }}" alt="">
-                                    <div class="post-date">
-                                        <a href="#"><span>05</span>April <br> 2018</a>
-                                    </div>
-                                </div>
-                                <div class="blog-content">
-                                    <a href="#" class="post-title">Omelet witch cheese</a>
-                                    <div class="meta-data">
-                                        by <a href="#">Maria Williams</a> in <a href="#">Restaurants</a>
-                                        <br>
-                                        Category: <a href="#"><b>Dessert</b></a>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet...</p>
-                                    <a href="{{route('user.receipe-post')}}" class="btn delicious-btn mt-30">Read More</a>
-                                </div>
-                            </div>
-                        </div>
+                        @foreach ($dataResep as $resep)
+                            <div class="col-md-4">
+                                <div class="single-blog-area mb-80">
+                                    <div class="blog-thumbnail">
+                                        <img src="{{ asset('storage/' . json_decode($resep->gambar, true)[0] ?? '') }}"
+                                            alt=""
+                                            style="width: 100%; height: 250px; object-fit: cover; border-radius: 5px;">
+                                        <div class="post-date" style="width: auto">
+                                            <a href="#">
+                                                <span>{{ $resep->created_at->format('d') }}</span>
+                                                {{ $resep->created_at->format('F') }} <br>
+                                                {{ $resep->created_at->format('Y') }}
+                                            </a>
 
-                        <!-- Single Blog Area -->
-                        <div class="col-md-4">
-                            <div class="single-blog-area mb-80">
-                                <div class="blog-thumbnail">
-                                    <img src="{{ asset('user/img/blog-img/2.jpg') }}" alt="">
-                                    <div class="post-date">
-                                        <a href="#"><span>05</span>April <br> 2018</a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="blog-content">
-                                    <a href="#" class="post-title">Onde - Onde</a>
-                                    <div class="meta-data">
-                                        by <a href="#">Maria Williams</a> in <a href="#">Restaurants</a>
-                                        <br>
-                                        Category: <a href="#"><b>Dessert</b></a>
+                                    <div class="blog-content">
+                                        <a href="#" class="post-title">{{ $resep->nama }}</a>
+                                        <div class="meta-data">
+                                            {{-- by <a href="#">Maria Williams</a> in <a href="#">Restaurants</a> --}}
+                                            <br>
+                                            Category: <a href="#"><b>{{ $resep->kategori->nama }}</b></a>
+                                        </div>
+                                        <p>{{ $resep->des }}</p>
+                                        <a href="{{ route('user.recipes.detail', encrypt($resep->id)) }}" class="btn delicious-btn">Read
+                                            More</a>
                                     </div>
-                                    <p>Lorem ipsum dolor sit amet...</p>
-                                    <a href="{{route('user.receipe-post')}}" class="btn delicious-btn mt-30">Read More</a>
                                 </div>
                             </div>
-                        </div>
-
+                        @endforeach
                         <!-- Single Blog Area -->
-                        <div class="col-md-4">
-                            <div class="single-blog-area mb-80">
-                                <div class="blog-thumbnail">
-                                    <img src="{{ asset('user/img/blog-img/3.jpg') }}" alt="">
-                                    <div class="post-date">
-                                        <a href="#"><span>05</span>April <br> 2018</a>
-                                    </div>
-                                </div>
-                                <div class="blog-content">
-                                    <a href="#" class="post-title">Hamburger</a>
-                                    <div class="meta-data">
-                                        by <a href="#">Maria Williams</a> in <a href="#">Restaurants</a>
-                                        <br>
-                                        Category: <a href="#"><b>Dessert</b></a>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet...</p>
-                                    <a href="{{route('user.receipe-post')}}" class="btn delicious-btn mt-30">Read More</a>
-                                </div>
-                            </div>
-                        </div>
 
                     </div>
                 </div>
