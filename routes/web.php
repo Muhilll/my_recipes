@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AdminAuthController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\pengguna\admin\AdminPenggunaAdminController;
 use App\Http\Controllers\admin\pengguna\member\AdminPenggunaMemberController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\user\recipes\UserRecipesController;
 use App\Http\Controllers\user\UserAuthController;
 use App\Http\Controllers\user\UserController;
 use App\Http\Controllers\user\UserProfileController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/index', function () {
@@ -39,54 +41,83 @@ Route::get('/elements', function () {
     return view('user.pages.elements');
 })->name('user.elements');
 
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
 
-Route::get('/pengguna/user', [AdminPenggunaUserController::class, 'index'])->name('admin.pengguna.user');
-Route::post('/pengguna/user', [AdminPenggunaUserController::class, 'store'])->name('admin.pengguna.user.store');
-Route::get('/pengguna/user/data', [AdminPenggunaUserController::class, 'data'])->name('admin.pengguna.user.data');
-Route::get('/pengguna/user/{id}', [AdminPenggunaUserController::class, 'show'])->name('admin.pengguna.user.show');
-Route::put('/pengguna/user/{id}', [AdminPenggunaUserController::class, 'update'])->name('admin.pengguna.user.update');
-Route::delete('/pengguna/user/{id}', [AdminPenggunaUserController::class, 'delete'])->name('admin.pengguna.user.delete');
+Route::get('/admin/auth/login', [AdminAuthController::class, 'index'])->name('login');
+Route::post('/admin/auth/login', [AdminAuthController::class, 'prosesLogin'])->name('login.proses');
 
-Route::get('/pengguna/member', [AdminPenggunaMemberController::class, 'index'])->name('admin.pengguna.member');
-Route::get('/pengguna/member/data', [AdminPenggunaMemberController::class, 'data'])->name('admin.pengguna.member.data');
-Route::post('/pengguna/member/', [AdminPenggunaMemberController::class, 'store'])->name('admin.pengguna.member.store');
-Route::delete('/pengguna/member/{id}', [AdminPenggunaMemberController::class, 'destroy'])->name('admin.pengguna.member.delete');
+Route::middleware(['auth'])->group(function () {
+    Route::get('logout', function(){
+        $role = Auth::user()->role;
+        Auth::logout();
 
-Route::get('/pengguna/admin', [AdminPenggunaAdminController::class, 'index'])->name('admin.pengguna.admin');
-Route::get('/pengguna/admin/data', [AdminPenggunaAdminController::class, 'data'])->name('admin.pengguna.admin.data');
-Route::post('/pengguna/admin/', [AdminPenggunaAdminController::class, 'store'])->name('admin.pengguna.admin.store');
-Route::get('/pengguna/admin/{id}', [AdminPenggunaAdminController::class, 'show'])->name('admin.pengguna.admin.show');
-Route::put('/pengguna/admin/{id}', [AdminPenggunaAdminController::class, 'update'])->name('admin.pengguna.admin.update');
-Route::delete('/pengguna/admin/{id}', [AdminPenggunaAdminController::class, 'destroy'])->name('admin.pengguna.admin.destroy');
+        if($role == 'admin'){
+            return redirect()->route('login');
+        }
+        
+        return redirect()->route('user.dashboard');
+    })->name('logout');
+});
 
-Route::get('/resep', [AdminResepController::class, 'index'])->name('admin.resep');
-Route::get('/resep/data', [AdminResepController::class, 'data'])->name('admin.resep.data');
-Route::post('/resep', [AdminResepController::class, 'store'])->name('admin.resep.store');
-Route::get('/resep/{id}', [AdminResepController::class, 'show'])->name('admin.resep.show');
-Route::put('/resep/{id}', [AdminResepController::class, 'update'])->name('admin.resep.update');
-Route::delete('/resep/{id}', [AdminResepController::class, 'delete'])->name('admin.resep.delete');
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    //admin
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
 
-Route::get('/kategori/resep', [AdminKategoriController::class, 'index'])->name('admin.resep.kategori');
-Route::get('/resep/kategori/data', [AdminKategoriController::class, 'data'])->name('admin.resep.kategori.data');
-Route::post('/resep/kategori', [AdminKategoriController::class, 'store'])->name('admin.resep.kategori.store');
-Route::get('/resep/kategori/{id}', [AdminKategoriController::class, 'show'])->name('admin.resep.kategori.show');
-Route::put('/resep/kategori/{id}', [AdminKategoriController::class, 'update'])->name('admin.resep.kategori.update');
-Route::delete('/resep/kategori/{id}', [AdminKategoriController::class, 'delete'])->name('admin.resep.kategori.destroy');
+    Route::get('/pengguna/user', [AdminPenggunaUserController::class, 'index'])->name('admin.pengguna.user');
+    Route::post('/pengguna/user', [AdminPenggunaUserController::class, 'store'])->name('admin.pengguna.user.store');
+    Route::get('/pengguna/user/data', [AdminPenggunaUserController::class, 'data'])->name('admin.pengguna.user.data');
+    Route::get('/pengguna/user/{id}', [AdminPenggunaUserController::class, 'show'])->name('admin.pengguna.user.show');
+    Route::put('/pengguna/user/{id}', [AdminPenggunaUserController::class, 'update'])->name('admin.pengguna.user.update');
+    Route::delete('/pengguna/user/{id}', [AdminPenggunaUserController::class, 'delete'])->name('admin.pengguna.user.delete');
 
-Route::get('/ulasan', [AdminUlasanController::class, 'index'])->name('admin.ulasan');
-Route::get('/ulasan/data', [AdminUlasanController::class, 'data'])->name('admin.ulasan.data');
+    Route::get('/pengguna/member', [AdminPenggunaMemberController::class, 'index'])->name('admin.pengguna.member');
+    Route::get('/pengguna/member/data', [AdminPenggunaMemberController::class, 'data'])->name('admin.pengguna.member.data');
+    Route::post('/pengguna/member/', [AdminPenggunaMemberController::class, 'store'])->name('admin.pengguna.member.store');
+    Route::delete('/pengguna/member/{id}', [AdminPenggunaMemberController::class, 'destroy'])->name('admin.pengguna.member.delete');
 
-Route::get('/profile/admin', [AdminProfileController::class, 'index'])->name('admin.profile');
-Route::post('/profile/admin', [AdminProfileController::class, 'update'])->name('admin.profile.update');
+    Route::get('/pengguna/admin', [AdminPenggunaAdminController::class, 'index'])->name('admin.pengguna.admin');
+    Route::get('/pengguna/admin/data', [AdminPenggunaAdminController::class, 'data'])->name('admin.pengguna.admin.data');
+    Route::post('/pengguna/admin/', [AdminPenggunaAdminController::class, 'store'])->name('admin.pengguna.admin.store');
+    Route::get('/pengguna/admin/{id}', [AdminPenggunaAdminController::class, 'show'])->name('admin.pengguna.admin.show');
+    Route::put('/pengguna/admin/{id}', [AdminPenggunaAdminController::class, 'update'])->name('admin.pengguna.admin.update');
+    Route::delete('/pengguna/admin/{id}', [AdminPenggunaAdminController::class, 'destroy'])->name('admin.pengguna.admin.destroy');
+
+    Route::get('/resep', [AdminResepController::class, 'index'])->name('admin.resep');
+    Route::get('/resep/data', [AdminResepController::class, 'data'])->name('admin.resep.data');
+    Route::post('/resep', [AdminResepController::class, 'store'])->name('admin.resep.store');
+    Route::get('/resep/{id}', [AdminResepController::class, 'show'])->name('admin.resep.show');
+    Route::put('/resep/{id}', [AdminResepController::class, 'update'])->name('admin.resep.update');
+    Route::delete('/resep/{id}', [AdminResepController::class, 'delete'])->name('admin.resep.delete');
+
+    Route::get('/kategori/resep', [AdminKategoriController::class, 'index'])->name('admin.resep.kategori');
+    Route::get('/resep/kategori/data', [AdminKategoriController::class, 'data'])->name('admin.resep.kategori.data');
+    Route::post('/resep/kategori', [AdminKategoriController::class, 'store'])->name('admin.resep.kategori.store');
+    Route::get('/resep/kategori/{id}', [AdminKategoriController::class, 'show'])->name('admin.resep.kategori.show');
+    Route::put('/resep/kategori/{id}', [AdminKategoriController::class, 'update'])->name('admin.resep.kategori.update');
+    Route::delete('/resep/kategori/{id}', [AdminKategoriController::class, 'delete'])->name('admin.resep.kategori.destroy');
+
+    Route::get('/ulasan', [AdminUlasanController::class, 'index'])->name('admin.ulasan');
+    Route::get('/ulasan/data', [AdminUlasanController::class, 'data'])->name('admin.ulasan.data');
+
+    Route::get('/profile/admin', [AdminProfileController::class, 'index'])->name('admin.profile');
+    Route::post('/profile/admin', [AdminProfileController::class, 'update'])->name('admin.profile.update');
+});
 
 //user
 Route::get('/', [UserController::class, 'index'])->name('user.dashboard');
+
+Route::get('/auth/login', [UserAuthController::class, 'login'])->name('user.auth.login');
+Route::post('/auth/login', [UserAuthController::class, 'prosesLogin'])->name('user.auth.login.proses');
+Route::get('/auth/register', [UserAuthController::class, 'register'])->name('user.auth.register');
+Route::post('/auth/register', [UserAuthController::class, 'prosesRegister'])->name('user.auth.register.proses');
+
 Route::get('/recipes', [UserRecipesController::class, 'index'])->name('user.recipes');
 Route::get('/recipes/detail/{id}', [UserRecipesController::class, 'detail'])->name('user.recipes.detail');
 Route::get('/favorite', [UserFavoriteController::class, 'index'])->name('user.favorite');
-Route::get('/auth/login', [UserAuthController::class, 'index'])->name('user.auth.login');
-Route::get('/profile', [UserProfileController::class, 'index'])->name('user.profile');
+
+Route::middleware(['auth', 'role:user'])->group(function () {
+    Route::get('/profile', [UserProfileController::class, 'index'])->name('user.profile');
+    Route::post('/profile', [UserProfileController::class, 'update'])->name('user.profile.update');
+});
 
 // Dashboard
 Route::get('/dashboard-general-dashboard', function () {

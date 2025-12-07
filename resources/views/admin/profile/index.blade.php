@@ -24,7 +24,6 @@
                         <div class="card">
                             <form method="post" action="{{ route('admin.profile.update') }}">
                                 @csrf
-                                <input type="text" name="user_id" value="{{ $profile->id }}" hidden>
                                 <div class="card-header">
                                     <h4>Edit Profile</h4>
                                 </div>
