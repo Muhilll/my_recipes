@@ -75,8 +75,10 @@ Route::put('/resep/kategori/{id}', [AdminKategoriController::class, 'update'])->
 Route::delete('/resep/kategori/{id}', [AdminKategoriController::class, 'delete'])->name('admin.resep.kategori.destroy');
 
 Route::get('/ulasan', [AdminUlasanController::class, 'index'])->name('admin.ulasan');
+Route::get('/ulasan/data', [AdminUlasanController::class, 'data'])->name('admin.ulasan.data');
 
 Route::get('/profile/admin', [AdminProfileController::class, 'index'])->name('admin.profile');
+Route::post('/profile/admin', [AdminProfileController::class, 'update'])->name('admin.profile.update');
 
 //user
 Route::get('/', [UserController::class, 'index'])->name('user.dashboard');

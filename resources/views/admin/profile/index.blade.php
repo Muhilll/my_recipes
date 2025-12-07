@@ -4,10 +4,7 @@
 
 @push('style')
     <!-- CSS Libraries -->
-    <link rel="stylesheet"
-        href="{{ asset('library/summernote/dist/summernote-bs4.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('library/bootstrap-social/assets/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('library/izitoast/dist/css/iziToast.min.css') }}">
 @endpush
 
 @section('main')
@@ -21,138 +18,65 @@
                 </div>
             </div>
             <div class="section-body">
-                <h2 class="section-title">Hi, Ujang!</h2>
-                <p class="section-lead">
-                    Change information about yourself on this page.
-                </p>
-
+                <h2 class="section-title">Hi, Admin!</h2>
                 <div class="row mt-sm-4">
-                    <div class="col-12 col-md-12 col-lg-5">
-                        <div class="card profile-widget">
-                            <div class="profile-widget-header">
-                                <img alt="image"
-                                    src="{{ asset('img/avatar/avatar-1.png') }}"
-                                    class="rounded-circle profile-widget-picture">
-                                <div class="profile-widget-items">
-                                    <div class="profile-widget-item">
-                                        <div class="profile-widget-item-label">Posts</div>
-                                        <div class="profile-widget-item-value">187</div>
-                                    </div>
-                                    <div class="profile-widget-item">
-                                        <div class="profile-widget-item-label">Followers</div>
-                                        <div class="profile-widget-item-value">6,8K</div>
-                                    </div>
-                                    <div class="profile-widget-item">
-                                        <div class="profile-widget-item-label">Following</div>
-                                        <div class="profile-widget-item-value">2,1K</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="profile-widget-description">
-                                <div class="profile-widget-name">Ujang Maman <div
-                                        class="text-muted d-inline font-weight-normal">
-                                        <div class="slash"></div> Web Developer
-                                    </div>
-                                </div>
-                                Ujang maman is a superhero name in <b>Indonesia</b>, especially in my family. He is not a
-                                fictional character but an original hero in my family, a hero for his children and for his
-                                wife. So, I use the name as a user in this template. Not a tribute, I'm just bored with
-                                <b>'John Doe'</b>.
-                            </div>
-                            <div class="card-footer text-center">
-                                <div class="font-weight-bold mb-2">Follow Ujang On</div>
-                                <a href="#"
-                                    class="btn btn-social-icon btn-facebook mr-1">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="#"
-                                    class="btn btn-social-icon btn-twitter mr-1">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="#"
-                                    class="btn btn-social-icon btn-github mr-1">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="#"
-                                    class="btn btn-social-icon btn-instagram">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-12 col-lg-7">
+                    <div class="col">
                         <div class="card">
-                            <form method="post"
-                                class="needs-validation"
-                                novalidate="">
+                            <form method="post" action="{{ route('admin.profile.update') }}">
+                                @csrf
+                                <input type="text" name="user_id" value="{{ $profile->id }}" hidden>
                                 <div class="card-header">
                                     <h4>Edit Profile</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="form-group col-md-6 col-12">
-                                            <label>First Name</label>
-                                            <input type="text"
-                                                class="form-control"
-                                                value="Ujang"
-                                                required="">
-                                            <div class="invalid-feedback">
-                                                Please fill in the first name
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-6 col-12">
-                                            <label>Last Name</label>
-                                            <input type="text"
-                                                class="form-control"
-                                                value="Maman"
-                                                required="">
-                                            <div class="invalid-feedback">
-                                                Please fill in the last name
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group col-md-7 col-12">
-                                            <label>Email</label>
-                                            <input type="email"
-                                                class="form-control"
-                                                value="ujang@maman.com"
-                                                required="">
-                                            <div class="invalid-feedback">
-                                                Please fill in the email
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-5 col-12">
-                                            <label>Phone</label>
-                                            <input type="tel"
-                                                class="form-control"
-                                                value="">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group col-12">
-                                            <label>Bio</label>
-                                            <textarea class="form-control summernote-simple">Ujang maman is a superhero name in <b>Indonesia</b>, especially in my family. He is not a fictional character but an original hero in my family, a hero for his children and for his wife. So, I use the name as a user in this template. Not a tribute, I'm just bored with <b>'John Doe'</b>.</textarea>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group col-12 mb-0">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox"
-                                                    name="remember"
-                                                    class="custom-control-input"
-                                                    id="newsletter">
-                                                <label class="custom-control-label"
-                                                    for="newsletter">Subscribe to newsletter</label>
-                                                <div class="text-muted form-text">
-                                                    You will get new information about products, offers and promotions
+                                        <div class="form-group col">
+                                            <label>Nama</label>
+                                            <input name="nama" type="text"
+                                                class="form-control @error('nama') is-invalid @enderror"
+                                                value="{{ old('nama', $profile->nama) }}" required readonly>
+
+                                            @error('nama')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
                                                 </div>
-                                            </div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group col">
+                                            <label>Email</label>
+                                            <input name="email" type="email"
+                                                class="form-control @error('email') is-invalid @enderror"
+                                                value="{{ old('email', $profile->email) }}" required readonly>
+
+                                            @error('email')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col">
+                                            <label>Password</label>
+                                            <input name="password" type="password"
+                                                class="form-control @error('password') is-invalid @enderror" readonly>
+
+                                            @error('password')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="card-footer text-right">
-                                    <button class="btn btn-primary">Save Changes</button>
+                                    <button type="button" id="btn-edit" class="btn btn-warning mr-2">
+                                        Edit
+                                    </button>
+                                    <button type="submit" id="btn-save" class="btn btn-primary" disabled>
+                                        Simpan
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -165,7 +89,38 @@
 
 @push('scripts')
     <!-- JS Libraies -->
-    <script src="{{ asset('library/summernote/dist/summernote-bs4.js') }}"></script>
+    <script src="{{ asset('library/izitoast/dist/js/iziToast.min.js') }}"></script>
 
-    <!-- Page Specific JS File -->
+    <script>
+        @if (session('success'))
+            iziToast.success({
+                title: 'Berhasil',
+                message: "{{ session('success') }}",
+                position: 'topRight'
+            });
+        @endif
+
+        @if ($errors->any())
+            iziToast.error({
+                title: 'Validasi Error',
+                message: "{{ $errors->first() }}",
+                position: 'topRight'
+            });
+        @endif
+    </script>
+
+    <script>
+        document.getElementById('btn-edit').addEventListener('click', function() {
+            const inputs = document.querySelectorAll('input');
+
+            inputs.forEach(input => {
+                if (input.name !== 'user_id') {
+                    input.removeAttribute('readonly');
+                }
+            });
+            document.getElementById('btn-save').disabled = false;
+            this.disabled = true;
+            this.innerText = "Editing...";
+        });
+    </script>
 @endpush

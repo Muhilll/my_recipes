@@ -75,7 +75,7 @@
                                         </div>
                                     </div>
                                     <div class="blog-content">
-                                        <a href="#" class="post-title">{{ $resep->nama }}</a>
+                                        <a href="{{ route('user.recipes.detail', encrypt($resep->id)) }}" class="post-title">{{ $resep->nama }}</a>
                                         <div class="meta-data">
                                             {{-- by <a href="#">Maria Williams</a> in <a href="#">Restaurants</a> --}}
                                             <br>

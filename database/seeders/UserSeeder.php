@@ -13,11 +13,11 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        for($i = 1; $i <= 10; $i++){
+        for($i = 1; $i <= 5; $i++){
             User::create([
                 'nama' =>  'user '.$i,
                 'email' => 'user'.$i.'@gmail.com',
-                'password' => 'user'.$i.'123',
+                'password' => bcrypt('user'.$i.'123'),
                 'jkl' => 'L',
                 'alamat' => 'fjnnsdjfhbsdjhf',
                 'no_hp' => '08508656678',
