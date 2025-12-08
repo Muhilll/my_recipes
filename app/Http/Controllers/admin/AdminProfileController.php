@@ -11,7 +11,8 @@ class AdminProfileController extends Controller
 {
 
     public function index(){
-        $profile = User::find(9);
+        $user_id = Auth::id();
+        $profile = User::find($user_id);
         return view('admin.profile.index',[
             'profile' => $profile,
             'type_menu' => ''
