@@ -41,7 +41,7 @@
                 <nav class="classy-navbar justify-content-between" id="deliciousNav">
 
                     <!-- Logo -->
-                    <a class="nav-brand" href="{{ route('user.index')}}"><img src="{{ asset('user/img/core-img/logo.png')}}" alt=""></a>
+                    <a class="nav-brand" href="{{ route('user.dashboard')}}"><img src="{{ asset('user/img/core-img/logo.png')}}" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
