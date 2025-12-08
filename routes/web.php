@@ -11,6 +11,7 @@ use App\Http\Controllers\admin\ulasan\AdminUlasanController;
 use App\Http\Controllers\admin\AdminProfileController;
 use App\Http\Controllers\user\favorite\UserFavoriteController;
 use App\Http\Controllers\user\recipes\UserRecipesController;
+use App\Http\Controllers\user\recipes\UserUlasanController;
 use App\Http\Controllers\user\UserAuthController;
 use App\Http\Controllers\user\UserController;
 use App\Http\Controllers\user\UserProfileController;
@@ -114,10 +115,20 @@ Route::get('/recipes', [UserRecipesController::class, 'index'])->name('user.reci
 Route::get('/recipes/detail/{id}', [UserRecipesController::class, 'detail'])->name('user.recipes.detail');
 Route::get('/favorite', [UserFavoriteController::class, 'index'])->name('user.favorite');
 
-Route::middleware(['auth', 'role:user'])->group(function () {
+Route::middleware(['role:user'])->group(function () {
+    Route::post('/favorite/add', [UserFavoriteController::class, 'tambahfavorite'])->name('user.favorite.tambah');
+    Route::post('/favorite/remove', [UserFavoriteController::class, 'hapusfavorite'])->name('user.favorite.hapus');
+    Route::post('/recipes/comment/add', [UserUlasanController::class, 'tambahKomentar'])->name('user.komentar.tambah');
+    Route::post('/recipes/pdf', [UserRecipesController::class, 'toPdf'])->name('user.recipes.to-pdf');
+
     Route::get('/profile', [UserProfileController::class, 'index'])->name('user.profile');
     Route::post('/profile', [UserProfileController::class, 'update'])->name('user.profile.update');
+    Route::get('/join-member', [UserAuthController::class, 'joinMember'])->name('user.join-member');
+    Route::post('/join-member', [UserAuthController::class, 'prosesJoinMember'])->name('user.join-member.proses');
 });
+Route::get('/join-member/activation', [UserAuthController::class, 'aktivasiMember'])->name('user.join-member.aktivasi');
+
+
 
 // Dashboard
 Route::get('/dashboard-general-dashboard', function () {

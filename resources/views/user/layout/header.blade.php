@@ -94,7 +94,9 @@
                                 <li class="{{ request()->routeIs('user.favorite') ? 'active' : '' }}"><a href="{{ route('user.favorite')}}">My Favorite</a></li>
                                 @if (Auth::check() and Auth::user()->role == 'user')
                                     <li class="{{ request()->routeIs('user.profile') ? 'active' : '' }}"><a href="{{route('user.profile')}}">Profile</a></li>
-                                    <li class="{{ request()->routeIs('user.join-member') ? 'active' : '' }}"><a href="#">Join Member</a></li>
+                                    @if (Auth::user()->status == 'guest')
+                                        <li class="{{ request()->routeIs('user.join-member') ? 'active' : '' }}"><a href="{{route('user.join-member')}}">Join Member</a></li>
+                                    @endif
                                 @else
                                     <li class="{{ request()->routeIs('user.auth.login') ? 'active' : '' }}"><a href="{{ route('user.auth.login')}}">Login</a></li>
                                     <li class="{{ request()->routeIs('user.auth.register') ? 'active' : '' }}"><a href="{{ route('user.auth.register')}}">Register</a></li>

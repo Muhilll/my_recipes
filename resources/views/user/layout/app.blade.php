@@ -35,7 +35,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <form action="#" method="post">
+                    <form action="{{ route('user.recipes') }}" method="get">
                         <input type="search" name="search" placeholder="Type any keywords...">
                         <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form>
@@ -49,6 +49,8 @@
     @yield('content')
 
     @include('user.layout.footer')
+
+    @stack('scripts')
 
     <!-- ##### All Javascript Files ##### -->
     <!-- jQuery-2.2.4 js -->

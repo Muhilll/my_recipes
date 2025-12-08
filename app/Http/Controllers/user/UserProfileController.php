@@ -36,4 +36,6 @@ class UserProfileController extends Controller
 
         return redirect()->route('user.profile')->with('success', 'Profile Update Succesfull!');
     }
+
+    
 }

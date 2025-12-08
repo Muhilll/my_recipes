@@ -46,7 +46,18 @@
                             @csrf
                             <div class="row">
 
-                                <div class="col-12 col-lg-6">
+                                <div class="col-12 col-lg-8">
+                                </div>
+                                <div class="col-12 col-lg-4">
+                                    <input style="background-color: rgb(5, 196, 5); color: white; font-size: 20px" name="status" value="Status: {{$user->status}}" type="text" class="form-control @error('status') is-invalid @enderror" id="status" placeholder="Status" readonly>
+                                    @error('status')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-12 col-lg-6 mt-5">
                                     <input type="text" name="nama" value="{{ old('nama', $user->nama) }}"
                                         class="form-control form-input @error('nama') is-invalid @enderror" placeholder="Nama Lengkap" required>
                                     @error('nama')
@@ -56,7 +67,7 @@
                                     @enderror
                                 </div>
 
-                                <div class="col-12 col-lg-6">
+                                <div class="col-12 col-lg-6 mt-5">
                                     <input type="email" name="email" value="{{ old('email', $user->email) }}"
                                         class="form-control form-input @error('email') is-invalid @enderror" placeholder="E-mail" required>
                                     @error('email')

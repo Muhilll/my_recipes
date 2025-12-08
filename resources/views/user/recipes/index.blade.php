@@ -23,34 +23,29 @@
     <div class="blog-area section-padding-80">
         <div class="receipe-post-search mb-80">
             <div class="container">
-                <form action="" method="post">
+                <form action="{{ route('user.recipes') }}" method="get">
                     <div class="row">
                         <div class="col-12 col-lg-3">
-                            <select name="select1" id="select1">
-                                <option value="1">All Receipies Categories</option>
-                                <option value="1">All Receipies Categories 2</option>
-                                <option value="1">All Receipies Categories 3</option>
-                                <option value="1">All Receipies Categories 4</option>
-                                <option value="1">All Receipies Categories 5</option>
+                            <select name="kategori_id" id="kategori_id">
+                                <option value="">All Categories</option>
+                                @foreach ($dataKategori as $kategori)
+                                    <option value="{{ $kategori->id }}"
+                                        {{ request('kategori_id') == $kategori->id ? 'selected' : '' }}>
+                                        {{ $kategori->nama }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
-                        <div class="col-12 col-lg-3">
-                            <select name="select1" id="select2">
-                                <option value="1">All Receipies Categories</option>
-                                <option value="1">All Receipies Categories 2</option>
-                                <option value="1">All Receipies Categories 3</option>
-                                <option value="1">All Receipies Categories 4</option>
-                                <option value="1">All Receipies Categories 5</option>
-                            </select>
-                        </div>
-                        <div class="col-12 col-lg-3">
-                            <input type="search" name="search" placeholder="Search Receipies">
+                        <div class="col-12 col-lg-6">
+                            <input type="search" name="search" placeholder="Search Recipes"
+                                value="{{ request('search') }}">
                         </div>
                         <div class="col-12 col-lg-3 text-right">
-                            <button type="button" class="btn delicious-btn">Search</button>
+                            <button type="submit" class="btn delicious-btn">Search</button>
                         </div>
                     </div>
                 </form>
+
             </div>
         </div>
 
@@ -75,14 +70,16 @@
                                         </div>
                                     </div>
                                     <div class="blog-content">
-                                        <a href="{{ route('user.recipes.detail', encrypt($resep->id)) }}" class="post-title">{{ $resep->nama }}</a>
+                                        <a href="{{ route('user.recipes.detail', encrypt($resep->id)) }}"
+                                            class="post-title">{{ $resep->nama }}</a>
                                         <div class="meta-data">
                                             {{-- by <a href="#">Maria Williams</a> in <a href="#">Restaurants</a> --}}
                                             <br>
                                             Category: <a href="#"><b>{{ $resep->kategori->nama }}</b></a>
                                         </div>
                                         <p>{{ \Illuminate\Support\Str::limit($resep->des, 100, '...') }}</p>
-                                        <a href="{{ route('user.recipes.detail', encrypt($resep->id)) }}" class="btn delicious-btn">Read
+                                        <a href="{{ route('user.recipes.detail', encrypt($resep->id)) }}"
+                                            class="btn delicious-btn">Read
                                             More</a>
                                     </div>
                                 </div>

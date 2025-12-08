@@ -17,7 +17,11 @@ class RoleMiddleware
     public function handle(Request $request, Closure $next, ...$roles): Response
     {
         if (!Auth::check()) {
-            return redirect()->route('admin.auth.login');
+            if($request->is('admin/*')){
+                return redirect()->route('admin.auth.login');
+            }
+
+            return redirect()->route('user.auth.login');
         }
 
         if (!in_array(Auth::user()->role, $roles)) {

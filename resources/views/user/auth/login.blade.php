@@ -28,16 +28,13 @@
                         <form action="{{route('user.auth.login.proses')}}" method="post">
                             @csrf
                             <div class="row">
-                                <br><br><br>
-                                <br><br><br>
-                                <br><br><br>
                                 <div class="col-12 col-lg-6">
                                     <input name="email" type="email" class="form-control" id="email" placeholder="E-mail">
                                 </div>
                                 <div class="col-12 col-lg-6">
                                     <input name="password" type="password" class="form-control" id="password" placeholder="Password">
                                 </div>
-                                <div class="col-12 text-center">
+                                <div class="col-12 text-center" style="margin-top: 100px">
                                     <button class="btn delicious-btn mt-30" type="submit">Login</button>
                                 </div>
                             </div>

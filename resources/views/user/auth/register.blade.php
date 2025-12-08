@@ -1,6 +1,6 @@
 @extends('user.layout.app')
 
-@section('title', 'My Recipes - Food Blog Template | Login')
+@section('title', 'My Recipes - Food Blog Template | Register')
 
 @push('style')
 

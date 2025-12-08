@@ -26,92 +26,65 @@
                 <div class="blog-posts-area">
                     <div class="row">
 
-                        <!-- Single Blog Horizontal -->
-                        <div class="col-12 mb-4">
-                            <div class="d-flex align-items-start p-3 border rounded shadow-sm">
+                        @if (Auth::check())
+                            @foreach ($dataFavorit as $favorit)
+                                <!-- Single Blog Horizontal -->
+                                <div class="col-12 mb-4">
+                                    <div class="p-3 border rounded shadow-sm"
+                                        style="display: grid; grid-template-columns: 150px auto; gap: 20px; align-items: start;">
 
-                                <!-- Gambar -->
-                                <div class="me-3">
-                                    <img src="{{ asset('user/img/blog-img/1.jpg') }}" alt=""
-                                        style="width: 150px; height: 160px; object-fit: cover; border-radius: 8px; margin-right: 20px">
+                                        <!-- Gambar -->
+                                        <div>
+                                            <img src="{{ asset('storage/' . json_decode($favorit->resep->gambar, true)[0] ?? '') }}"
+                                                alt=""
+                                                style="width: 150px; height: 180px; object-fit: cover; border-radius: 8px;">
+                                        </div>
+
+                                        <!-- Konten -->
+                                        <div>
+                                            <h5 class="mb-1">{{ $favorit->resep->nama }}</h5>
+                                            <small>Category: <a
+                                                    href="#">{{ $favorit->resep->kategori->nama }}</a></small>
+
+                                            <p class="mt-2 mb-2"
+                                                style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                                {{ $favorit->resep->des }}
+                                            </p>
+
+                                            <a href="{{ route('user.recipes.detail', encrypt($favorit->resep->id)) }}"
+                                                class="btn delicious-btn btn-sm">
+                                                Read More
+                                            </a>
+                                        </div>
+
+                                    </div>
                                 </div>
+                            @endforeach
 
-                                <!-- Konten -->
-                                <div>
-                                    <h5 class="mb-1">Nama / Judul Post</h5>
-                                    <small class="text-muted">by Maria Williams</small>
-                                    <br>
-                                    <small>Category: <a href="#">Dessert</a></small>
 
-                                    <p class="mt-2 mb-2">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec varius dui.
-                                    </p>
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                    <li class="page-item active"><a class="page-link" href="#">01.</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">02.</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">03.</a></li>
+                                </ul>
+                            </nav>
+                        @else
+                            <div class="col-12 mt-5">
+                                <div class="single-widget">
+                                    <div class="quote-area d-flex justify-content-center align-items-center">
 
-                                    <a href="{{route('user.receipe-post')}}" class="btn delicious-btn btn-sm">Read More</a>
+                                        <h4 class="text-center">
+                                            Login To See This Content!
+                                            <br>
+                                            <a href="{{ route('user.auth.login') }}">Login</a>
+                                        </h4>
+                                    </div>
                                 </div>
-
                             </div>
-                        </div>
-
-                        <div class="col-12 mb-4">
-                            <div class="d-flex align-items-start p-3 border rounded shadow-sm">
-
-                                <!-- Gambar -->
-                                <div class="me-3">
-                                    <img src="{{ asset('user/img/blog-img/1.jpg') }}" alt=""
-                                        style="width: 150px; height: 160px; object-fit: cover; border-radius: 8px; margin-right: 20px">
-                                </div>
-
-                                <!-- Konten -->
-                                <div>
-                                    <h5 class="mb-1">Nama / Judul Post</h5>
-                                    <small class="text-muted">by Maria Williams</small>
-                                    <br>
-                                    <small>Category: <a href="#">Dessert</a></small>
-                                    <p class="mt-2 mb-2">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec varius dui.
-                                    </p>
-
-                                    <a href="{{route('user.receipe-post')}}" class="btn delicious-btn btn-sm">Read More</a>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-12 mb-4">
-                            <div class="d-flex align-items-start p-3 border rounded shadow-sm">
-
-                                <!-- Gambar -->
-                                <div class="me-3">
-                                    <img src="{{ asset('user/img/blog-img/1.jpg') }}" alt=""
-                                        style="width: 150px; height: 160px; object-fit: cover; border-radius: 8px; margin-right: 20px">
-                                </div>
-
-                                <!-- Konten -->
-                                <div>
-                                    <h5 class="mb-1">Nama / Judul Post</h5>
-                                    <small class="text-muted">by Maria Williams</small>
-                                    <br>
-                                    <small>Category: <a href="#">Dessert</a></small>
-                                    <p class="mt-2 mb-2">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec varius dui.
-                                    </p>
-
-                                    <a href="{{route('user.receipe-post')}}" class="btn delicious-btn btn-sm">Read More</a>
-                                </div>
-
-                            </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
-
-
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        <li class="page-item active"><a class="page-link" href="#">01.</a></li>
-                        <li class="page-item"><a class="page-link" href="#">02.</a></li>
-                        <li class="page-item"><a class="page-link" href="#">03.</a></li>
-                    </ul>
-                </nav>
             </div>
         </div>
     </div>
