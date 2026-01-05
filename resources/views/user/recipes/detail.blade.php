@@ -109,15 +109,25 @@
                                 </form>
                             @endif
 
-                            @if (Auth::user()->status == 'guest')                                
-                                <a type="submit" href="{{route('user.join-member')}}" style="color: white" class="btn delicious-btn mt-2">Join Member to Save PDF</a>
-                            @else    
+                            @if (Auth::check())
+                                @if (Auth::user()->status == 'guest')
+                                    <a type="submit" href="{{ route('user.join-member') }}" style="color: white"
+                                        class="btn delicious-btn mt-2">Join Member to Save PDF</a>
+                                @else
+                                    <form action="{{ route('user.recipes.to-pdf') }}" method="POST">
+                                        @csrf
+                                        <input type="text" name="resep_id" value="{{ encrypt($resep->id) }}" hidden>
+                                        <button type="submit" class="btn delicious-btn mt-2">Save to PDF</button>
+                                    </form>
+                                @endif
+                            @else
                                 <form action="{{ route('user.recipes.to-pdf') }}" method="POST">
                                     @csrf
                                     <input type="text" name="resep_id" value="{{ encrypt($resep->id) }}" hidden>
                                     <button type="submit" class="btn delicious-btn mt-2">Save to PDF</button>
                                 </form>
                             @endif
+
                         </div>
                     </div>
                 </div>
@@ -183,7 +193,8 @@
                                     </div>
 
                                     <div class="col-12 mt-3">
-                                        <textarea name="ulasan" class="form-control" id="message" cols="30" rows="10" placeholder="Message" required></textarea>
+                                        <textarea name="ulasan" class="form-control" id="message" cols="30" rows="10" placeholder="Message"
+                                            required></textarea>
                                     </div>
 
                                     <div class="col-12">
@@ -210,22 +221,21 @@
                                 style="display: grid; grid-template-columns: 150px auto; gap: 20px; align-items: start;">
 
                                 <div>
-                                    <h5 class="mb-1">{{$ulasan->user->nama}}</h5>
+                                    <h5 class="mb-1">{{ $ulasan->user->nama }}</h5>
                                     <div class="receipe-ratings text-left">
-                                            <div class="ratings d-flex align-items-center mt-3"
-                                                style="font-size: 22px;">
-                                                @for ($i = 0; $i < $ulasan->rating; $i++)
-                                                    <i class="fa fa-star"></i>
-                                                @endfor
-                                                @for ($i = 0; $i < 5 - $ulasan->rating; $i++)
-                                                    <i class="fa fa-star-o"></i>
-                                                @endfor
-                                            </div>
+                                        <div class="ratings d-flex align-items-center mt-3" style="font-size: 22px;">
+                                            @for ($i = 0; $i < $ulasan->rating; $i++)
+                                                <i class="fa fa-star"></i>
+                                            @endfor
+                                            @for ($i = 0; $i < 5 - $ulasan->rating; $i++)
+                                                <i class="fa fa-star-o"></i>
+                                            @endfor
+                                        </div>
                                     </div>
 
                                     <p class="mt-2 mb-2"
                                         style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
-                                        {{$ulasan->ulasan}}
+                                        {{ $ulasan->ulasan }}
                                     </p>
                                 </div>
 
