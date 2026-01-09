@@ -126,7 +126,7 @@
                                 <div class="media-body">
                                     <div class="text-primary float-right">{{ $member->updated_at}}</div>
                                     <div class="media-title">{{$member->nama}}</div>
-                                    <span class="text-small text-muted">Bergabung pada: {{ $member->created_at }}</span>
+                                    <span class="text-small text-muted">Bergabung pada: {{ $member->updated_at }}</span>
                                 </div>
                             </li>
                         @endforeach
