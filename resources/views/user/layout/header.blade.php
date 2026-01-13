@@ -101,6 +101,7 @@
                                     <li class="{{ request()->routeIs('user.auth.login') ? 'active' : '' }}"><a href="{{ route('user.auth.login')}}">Login</a></li>
                                     <li class="{{ request()->routeIs('user.auth.register') ? 'active' : '' }}"><a href="{{ route('user.auth.register')}}">Register</a></li>
                                 @endif
+                                <li class=""><a href="{{route('user.tes')}}"></a></li>
                             </ul>
 
                             <!-- Newsletter Form -->

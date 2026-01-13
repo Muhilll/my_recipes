@@ -18,6 +18,9 @@ use App\Http\Controllers\user\UserProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/tes', function () {
+})->name('user.tes');
+
 Route::get('/index', function () {
     return view('user.pages.index');
 })->name('user.index');
