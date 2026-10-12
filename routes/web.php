@@ -9,6 +9,7 @@ use App\Http\Controllers\admin\resep\AdminResepController;
 use App\Http\Controllers\admin\resep\kategori\AdminKategoriController;
 use App\Http\Controllers\admin\ulasan\AdminUlasanController;
 use App\Http\Controllers\admin\AdminProfileController;
+use App\Http\Controllers\LikaController;
 use App\Http\Controllers\user\favorite\UserFavoriteController;
 use App\Http\Controllers\user\recipes\UserRecipesController;
 use App\Http\Controllers\user\recipes\UserUlasanController;
@@ -20,6 +21,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/tes', function () {
 })->name('user.tes');
+
+Route::get('/lika', [LikaController::class, 'lika']);
+Route::get('/barce', [LikaController::class, 'barce']);
+Route::get('/lika/barce', [LikaController::class, 'barce']);
+Route::get('/inasimuts', [LikaController::class, 'inas']);
 
 Route::get('/index', function () {
     return view('user.pages.index');

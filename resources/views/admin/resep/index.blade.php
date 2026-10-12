@@ -76,7 +76,7 @@
                                 <button class="btn btn-primary mx-2" id="modal-tambah-resep">
                                     <i class="fa fa-plus"></i>
                                     Tambah
-                                </button>
+                                </button> 
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
