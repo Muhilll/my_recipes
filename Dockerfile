@@ -36,7 +36,7 @@ RUN apt-get update && apt-get install -y \
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Aktifkan Apache mod_rewrite untuk routing Laravel
-RUN a2enmod rewrite
+RUN a2enmod rewrite && echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 # Arahkan Document Root Apache ke folder public Laravel
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public

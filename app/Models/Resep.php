@@ -18,12 +18,6 @@ class Resep extends Model
         'kategori_id'
     ];
 
-    protected $casts = [
-        'gambar' => 'array',
-        'bahan' => 'array',
-        'langkah' => 'array',
-    ];
-
     public function kategori()
     {
         return $this->belongsTo(Kategori::class);
